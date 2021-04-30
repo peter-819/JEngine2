@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "Application.h"
-#include "facilities.h"
 
 JEngine2::Application::Application()
 {
