@@ -1,8 +1,12 @@
 #include "pch.h"
 #include "Application.h"
-#include "spdlog/spdlog.h"
+#include "facilities.h"
+
+JEngine2::Application::Application()
+{
+}
 
 void JEngine2::Application::Run()
 {
-	spdlog::info("Hello JEngine2 !!!");
+	JE_LOG_INFO("Hello JEngine 2 !");
 }

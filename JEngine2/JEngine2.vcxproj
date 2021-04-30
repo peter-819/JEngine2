@@ -82,11 +82,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\core\facilities.cpp" />
     <ClCompile Include="src\core\Application.cpp" />
     <ClCompile Include="src\core\main.cpp" />
     <ClCompile Include="src\pch.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\facilities.h" />
     <ClInclude Include="src\core\Application.h" />
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
