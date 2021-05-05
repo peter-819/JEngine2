@@ -55,7 +55,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)ThirdParty/spdlog/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)src;$(SolutionDir)ThirdParty/spdlog/include;$(SolutionDir)ThirdParty/DirectXHeaders/include</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -63,6 +63,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>D3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -86,11 +87,20 @@
     <ClCompile Include="src\core\Application.cpp" />
     <ClCompile Include="src\core\main.cpp" />
     <ClCompile Include="src\pch.cpp" />
+    <ClCompile Include="src\Renderer\RHI\D3D12\D3D12Device.cpp" />
+    <ClCompile Include="src\Platform\Win\WinWindow.cpp" />
+    <ClCompile Include="src\Platform\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\facilities.h" />
     <ClInclude Include="src\core\Application.h" />
     <ClInclude Include="src\pch.h" />
+    <ClInclude Include="src\Platform\Platform.h" />
+    <ClInclude Include="src\Platform\PlatformMarcos.h" />
+    <ClInclude Include="src\Renderer\RHI\D3D12\D3D12Device.h" />
+    <ClInclude Include="src\Renderer\RHI\D3D12\D3D12Include.h" />
+    <ClInclude Include="src\Platform\Win\WinWindow.h" />
+    <ClInclude Include="src\Platform\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -17,3 +17,5 @@ namespace JEngine2 {
 #define JE_LOG_INFO(...)     ::JEngine2::Logger::GetLoggerPtr()->info(__VA_ARGS__)
 #define JE_LOG_TRACE(...)    ::JEngine2::Logger::GetLoggerPtr()->trace(__VA_ARGS__)
 #define JE_LOG_FATAL(...)    ::JEngine2::Logger::GetLoggerPtr()->fatal(__VA_ARGS__)
+
+#define Assert(x) assert(x)

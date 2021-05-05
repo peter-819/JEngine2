@@ -11,6 +11,8 @@
 #include <type_traits>
 #include <utility>
 
+#include <cassert>
+
 
 // --------- My Header ---------// 
 #include "core/facilities.h"

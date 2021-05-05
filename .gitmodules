@@ -1,3 +1,6 @@
 [submodule "ThirdParty/spdlog"]
 	path = ThirdParty/spdlog
 	url = git@github.com:gabime/spdlog.git
+[submodule "ThirdParty/DirectXHeaders"]
+	path = ThirdParty/DirectXHeaders
+	url = git@github.com:microsoft/DirectX-Headers.git

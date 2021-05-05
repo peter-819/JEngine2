@@ -1,9 +1,12 @@
 #pragma once
+#include "Platform/PlatformMarcos.h"
 
 namespace JEngine2 {
 	class Application {
 	public:
-		Application();
+		Application(PlatformInstanceHandle instance);
 		virtual void Run();
+	private:
+		PlatformInstanceHandle mInstance;
 	};
 }
