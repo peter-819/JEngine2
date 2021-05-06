@@ -8,6 +8,7 @@ namespace JEngine2 {
 	public:
 		WinWindow(const WindowConfig& config);
 		virtual void Show() const override;
+		virtual PlatformWindowHandle GetPlatformWindowHandle() const override;
 	private:
 		void PrivateRegisterClass();
 		void PrivateCreateWindow();

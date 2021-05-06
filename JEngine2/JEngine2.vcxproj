@@ -63,7 +63,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>D3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DXGI.lib;D3d12.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -90,6 +90,7 @@
     <ClCompile Include="src\Renderer\RHI\D3D12\D3D12Device.cpp" />
     <ClCompile Include="src\Platform\Win\WinWindow.cpp" />
     <ClCompile Include="src\Platform\Window.cpp" />
+    <ClCompile Include="src\Renderer\RHI\D3D12\D3D12Infrastructure.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\facilities.h" />

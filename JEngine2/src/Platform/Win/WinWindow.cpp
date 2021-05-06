@@ -2,8 +2,36 @@
 #include "WinWindow.h"
 
 namespace {
-	LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-		return DefWindowProc(hwnd, uMsg, wParam, lParam);
+	//LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+	//	return DefWindowProc(hwnd, uMsg, wParam, lParam);
+	//}
+
+	static std::function<void()> gUpdateFunc;
+
+	LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+	{
+		switch (message)
+		{
+		case WM_PAINT:
+			gUpdateFunc();
+			break;
+		case WM_SYSKEYDOWN:
+		case WM_KEYDOWN:
+		break;
+		// The default window procedure will play a system notification sound 
+		// when pressing the Alt+Enter keyboard combination if this message is 
+		// not handled.
+		case WM_SYSCHAR:
+			break;
+		case WM_SIZE:
+		break;
+		case WM_DESTROY:
+			::PostQuitMessage(0);
+			break;
+		default:
+			return ::DefWindowProcW(hwnd, message, wParam, lParam);
+		}
+		return 0;
 	}
 }
 
@@ -12,6 +40,8 @@ namespace JEngine2 {
 	WinWindow::WinWindow(const WindowConfig& config)
 		:Window(config),mInstance(config.Instance)
 	{
+		Assert(config.UpdateFunc);
+		gUpdateFunc = config.UpdateFunc;
 		PrivateRegisterClass();
 		PrivateCreateWindow();
 	}
@@ -19,6 +49,21 @@ namespace JEngine2 {
 	void WinWindow::Show() const
 	{
 		ShowWindow(mHwnd, 1);
+
+		MSG msg = {};
+		while (msg.message != WM_QUIT)
+		{
+			if (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+			{
+				::TranslateMessage(&msg);
+				::DispatchMessage(&msg);
+			}
+		}
+	}
+
+	PlatformWindowHandle WinWindow::GetPlatformWindowHandle() const
+	{
+		return mHwnd;
 	}
 
 	void WinWindow::PrivateRegisterClass()
@@ -28,7 +73,7 @@ namespace JEngine2 {
 
 		windowClass.cbSize = sizeof(WNDCLASSEX);
 		windowClass.style = CS_HREDRAW | CS_VREDRAW;
-		windowClass.lpfnWndProc = &::WindowProc;
+		windowClass.lpfnWndProc = &::WndProc;
 		windowClass.cbClsExtra = 0;
 		windowClass.cbWndExtra = 0;
 		windowClass.hInstance = mInstance;

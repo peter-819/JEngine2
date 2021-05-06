@@ -12,7 +12,7 @@
 #include <utility>
 
 #include <cassert>
-
+#include <functional>
 
 // --------- My Header ---------// 
 #include "core/facilities.h"

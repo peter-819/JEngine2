@@ -1,3 +1,5 @@
+#pragma once
+
 #include "PlatformMarcos.h"
 #include "Window.h"
 #include <memory>
@@ -9,9 +11,9 @@ static_assert(false, "Only Support Windows !!!");
 #endif
 
 namespace JEngine2 {
-	std::shared_ptr<Window> CreatePlatformWindow(const WindowConfig& config) {
+	FORCEINLINE Window* CreatePlatformWindow(const WindowConfig& config) {
 		if constexpr (_WIN32) {
-			return std::make_shared<WinWindow>(config);
+			return new WinWindow(config);
 		}
 		else {
 			Assert(false&&"Only Support Windows !!!");
