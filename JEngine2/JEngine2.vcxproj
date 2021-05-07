@@ -91,6 +91,7 @@
     <ClCompile Include="src\Platform\Win\WinWindow.cpp" />
     <ClCompile Include="src\Platform\Window.cpp" />
     <ClCompile Include="src\Renderer\RHI\D3D12\D3D12Infrastructure.cpp" />
+    <ClCompile Include="src\Renderer\RHI\D3D12\D3D12SwapChain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\facilities.h" />
@@ -102,6 +103,7 @@
     <ClInclude Include="src\Renderer\RHI\D3D12\D3D12Include.h" />
     <ClInclude Include="src\Platform\Win\WinWindow.h" />
     <ClInclude Include="src\Platform\Window.h" />
+    <ClInclude Include="src\Renderer\RHI\D3D12\D3D12SwapChain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
