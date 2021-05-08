@@ -3,7 +3,7 @@
 
 namespace JEngine2 {
 	
-	D3D12Device::D3D12Device(const D3D12DeviceConfig& config)
+	D3D12Device::D3D12Device(const RHIDeviceConfig& config)
 	{
 		if (config.bEnableDebugLayer) {
 			D3D12Infrastructure::EnableDebugLayer();
@@ -33,15 +33,11 @@ namespace JEngine2 {
 		::CloseHandle(mEventHandle);
 	}
 
-	void D3D12Device::Render()
+	void D3D12Device::Clear(float r,float g,float b,float a)
 	{
-		BeginFrame(); // TODO : Call BeginFrame outside Render
-
-		float clearColor[] = { 0.4f,0.6f,0.9f,1.0f };
+		float clearColor[] = { r,g,b,a };
 		auto rtv = mSwapChain->GetCurrentRTV();
 		mCommandList->ClearRenderTargetView(rtv, clearColor, 0, nullptr);
-		
-		EndFrame();	//TODO: Call EndFrame outside Render
 	}
 
 	void D3D12Device::BeginFrame()

@@ -42,6 +42,9 @@
     <ClCompile Include="src\Renderer\RHI\D3D12\D3D12SwapChain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Renderer\Renderer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\pch.h">
@@ -72,6 +75,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer\RHI\D3D12\D3D12SwapChain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\Renderer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Renderer\RHI\RHIDevice.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

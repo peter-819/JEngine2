@@ -1,6 +1,6 @@
 #pragma once
 #include "Platform/Platform.h"
-#include "Renderer/RHI/D3D12/D3D12Device.h"
+#include "Renderer/Renderer.h"
 
 namespace JEngine2 {
 	class Application {
@@ -11,8 +11,7 @@ namespace JEngine2 {
 		~Application();
 	private:
 		PlatformInstanceHandle mInstance;
-		std::unique_ptr<Window> mWindow;
-		std::unique_ptr<D3D12Device> mRenderDevice;
-
+		std::shared_ptr<Window> mWindow;
+		std::unique_ptr<Renderer> mRenderer;
 	};
 }

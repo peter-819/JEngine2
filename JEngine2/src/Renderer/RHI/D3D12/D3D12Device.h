@@ -1,17 +1,11 @@
 #pragma once
 
 #include "D3D12Include.h"
-#include "Platform/Platform.h"
 
 #include "D3D12SwapChain.h"
+#include "Renderer/RHI/RHIDevice.h"
 
 namespace JEngine2 {
-	struct D3D12DeviceConfig {
-		bool bEnableDebugLayer;
-		PlatformWindowHandle windowHandle;
-		uint32_t windowWidth;
-		uint32_t windowHeight;
-	};
 
 	class D3D12Infrastructure {
 	public:
@@ -35,16 +29,14 @@ namespace JEngine2 {
 		static void Update();
 	};
 
-	class D3D12Device {
+	class D3D12Device : public RHIDevice {
 	public:
-		D3D12Device() = delete;
-		D3D12Device(const D3D12Device&) = delete;
-		~D3D12Device();
+		virtual ~D3D12Device() override;
 
-		D3D12Device(const D3D12DeviceConfig& config);
-		void Render();
-		void BeginFrame();
-		void EndFrame();
+		D3D12Device(const RHIDeviceConfig& config);
+		virtual void Clear(float r, float g, float b, float a) override;
+		virtual void BeginFrame() override;
+		virtual void EndFrame() override;
 	private:
 		std::unique_ptr<D3D12SwapChain> mSwapChain;
 	private:

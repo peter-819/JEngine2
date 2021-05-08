@@ -12,18 +12,11 @@ JEngine2::Application::Application(PlatformInstanceHandle instance) : mInstance(
 	config.UpdateFunc = std::bind(&Application::Tick, this);
 
 	mWindow.reset(CreatePlatformWindow(config));
+	mRenderer = std::make_unique<Renderer>(mWindow);
 }
 
 void JEngine2::Application::Run()
 {
-	D3D12DeviceConfig config;
-	config.bEnableDebugLayer = true;
-	config.windowHandle = mWindow->GetPlatformWindowHandle();
-	auto[x, y] = mWindow->GetWindowRect();
-	config.windowWidth = x;
-	config.windowHeight = y;
-	
-	mRenderDevice = std::make_unique<D3D12Device>(config);
 	mWindow->Show();
 }
 
@@ -31,11 +24,11 @@ void JEngine2::Application::Tick()
 {
 	static uint32_t tickCount = 0;
 	JE_LOG_INFO("Application Tick {0}", tickCount++);
-	mRenderDevice->Render();
+	mRenderer->Render();
 }
 
 JEngine2::Application::~Application()
 {
-	mRenderDevice.reset();
+	mRenderer.reset();
 	mWindow.reset();
 }
