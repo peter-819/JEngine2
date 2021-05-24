@@ -16,7 +16,7 @@ namespace JEngine2 {
 		static ComPtr<ID3D12DescriptorHeap> CreateDescriptorHeap(ComPtr<ID3D12Device2> device,
 			D3D12_DESCRIPTOR_HEAP_TYPE type, uint32_t numDescriptors);
 		static ComPtr<ID3D12CommandAllocator> CreateCommandAllocator(ComPtr<ID3D12Device2> device, D3D12_COMMAND_LIST_TYPE type);
-		static ComPtr<ID3D12GraphicsCommandList> CreateCommandList(ComPtr<ID3D12Device2> device,
+		static ComPtr<ID3D12GraphicsCommandList2> CreateCommandList(ComPtr<ID3D12Device2> device,
 			ComPtr<ID3D12CommandAllocator> commandAllocator, D3D12_COMMAND_LIST_TYPE type);
 		static ComPtr<ID3D12Fence> CreateFence(ComPtr<ID3D12Device2> device);
 		static HANDLE CreateEventHandle();
@@ -47,7 +47,7 @@ namespace JEngine2 {
 		ComPtr<IDXGIAdapter4> mAdaptor;
 		ComPtr<ID3D12Device2> mDevice;
 		ComPtr<ID3D12CommandQueue> mCommandQueue;
-		ComPtr<ID3D12GraphicsCommandList> mCommandList;
+		ComPtr<ID3D12GraphicsCommandList2> mCommandList;
 		ComPtr<ID3D12CommandAllocator> mCommandAllocators[mNumFrames];
 
 		ComPtr<ID3D12Fence> mFence;
