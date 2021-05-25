@@ -18,7 +18,15 @@ namespace JEngine2 {
 	void Renderer::Render()
 	{
 		mDevice->BeginFrame();
-		mDevice->Clear(0.5f, 0.3f, 0.1f, 0.0f);
+		auto commandList = mDevice->GetCommandList(RHICommandListType::Direct);
+		commandList->BeginFrame(mDevice->GetCurrentSwapChainRT());
+		RHIRenderPassDesc renderPassDesc;
+		renderPassDesc.rt = mDevice->GetCurrentSwapChainRT();
+		renderPassDesc.color = RHIColor(0.3f, 0.5f, 0.3f);
+		commandList->BeginPass(renderPassDesc);
+		commandList->EndPass();
+		commandList->EndFrame();
+		mDevice->ExecuteCommandList(commandList);
 		mDevice->EndFrame();
 	}
 
